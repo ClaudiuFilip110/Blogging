@@ -6,8 +6,8 @@
 # https://learn-the-web.algonquindesign.ca/topics/markdown-yaml-cheat-sheet/#yaml
 # https://learnxinyminutes.com/docs/yaml/
 
-title: fastpages
-description: An easy to use blogging platform with support for Jupyter Notebooks.
+title: Filip Claudiu's blogs
+description: A blogging platform built using fastai's fastblog
 github_username: ClaudiuFilip110
 # you can comment the below line out if your repo name is not different than your baseurl
 github_repo: "Blogging"
@@ -39,8 +39,8 @@ baseurl: "/Blogging" # the subpath of your site, e.g. "/blog".
 # Github and twitter are optional:
 minima:
   social_links:
-    twitter: fastdotai
-    github: fastai
+    github: ClaudiuFilip110
+    linkedin: claudiu-filip-1394a7190/
 
 # Set this to true to get LaTeX math equation support
 use_math: 
@@ -49,7 +49,7 @@ use_math:
 show_description: true
 
 # Set this to true to display image previews on home page, if they exist
-show_image: false
+show_image: true
 
 # Set this to true to turn on annotations with hypothes.is (https://web.hypothes.is/)
 annotations: false
@@ -119,4 +119,4 @@ kramdown:
 # to limit size of xml as it can grow quite large.
 feed:
   posts_limit: 5 #default posts_limit: 10
-  excerpt_only: true
+  excerpt_only: false
