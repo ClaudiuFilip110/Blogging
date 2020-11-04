@@ -2,23 +2,12 @@
   
     
   
-    
-        "post1": {
-            "title": "Title",
-            "content": ".",
-            "url": "https://claudiufilip110.github.io/Blogging/2020/10/05/photo.html",
-            "relUrl": "/2020/10/05/photo.html",
-            "date": " • Oct 5, 2020"
-        }
-        
-    
-  
 
   
   
 
   
-      ,"page1": {
+      "page1": {
           "title": "About Me",
           "content": "This website is powered by fastpages 1. . a blogging platform that natively supports Jupyter notebooks in addition to other formats. &#8617; . |",
           "url": "https://claudiufilip110.github.io/Blogging/about/",
