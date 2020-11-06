@@ -4,74 +4,15 @@
   
     
   
-    
-  
-    
-  
-    
-        "post4": {
-            "title": "Title",
-            "content": ".",
-            "url": "https://claudiufilip110.github.io/Blogging/2020/10/05/photo.html",
-            "relUrl": "/2020/10/05/photo.html",
-            "date": " • Oct 5, 2020"
-        }
-        
-    
-  
-    
-        ,"post5": {
-            "title": "Title",
-            "content": ". .",
-            "url": "https://claudiufilip110.github.io/Blogging/2020/10/05/photo-Copy3.html",
-            "relUrl": "/2020/10/05/photo-Copy3.html",
-            "date": " • Oct 5, 2020"
-        }
-        
-    
-  
-    
-        ,"post6": {
-            "title": "Title",
-            "content": ". .",
-            "url": "https://claudiufilip110.github.io/Blogging/2020/10/05/photo-Copy2.html",
-            "relUrl": "/2020/10/05/photo-Copy2.html",
-            "date": " • Oct 5, 2020"
-        }
-        
-    
-  
-    
-        ,"post7": {
-            "title": "Title",
-            "content": ".",
-            "url": "https://claudiufilip110.github.io/Blogging/2020/10/05/photo-Copy1.html",
-            "relUrl": "/2020/10/05/photo-Copy1.html",
-            "date": " • Oct 5, 2020"
-        }
-        
-    
-  
-    
-        ,"post8": {
-            "title": "Title",
-            "content": ".",
-            "url": "https://claudiufilip110.github.io/Blogging/2020/10/05/hidden-layer.html",
-            "relUrl": "/2020/10/05/hidden-layer.html",
-            "date": " • Oct 5, 2020"
-        }
-        
-    
-  
 
   
   
 
   
-      ,"page1": {
+      "page1": {
           "title": "About Me",
           "content": "This website is powered by fastpages 1. . a blogging platform that natively supports Jupyter notebooks in addition to other formats. &#8617; . |",
-          "url": "https://claudiufilip110.github.io/Blogging/about/",
+          "url": "https://claudiufilip110.github.io/about/",
           "relUrl": "/about/",
           "date": ""
       }
@@ -103,7 +44,7 @@
       ,"page10": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
-          "url": "https://claudiufilip110.github.io/Blogging/robots.txt",
+          "url": "https://claudiufilip110.github.io/robots.txt",
           "relUrl": "/robots.txt",
           "date": ""
       }

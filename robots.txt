@@ -1,1 +1,1 @@
-Sitemap: https://claudiufilip110.github.io/Blogging/sitemap.xml
+Sitemap: https://claudiufilip110.github.io/sitemap.xml
