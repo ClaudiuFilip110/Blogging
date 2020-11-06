@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image" /><!-- Begin Jekyll SEO tag v2.6.1 -->
+<title>Neural networks explained | Filip Claudiu’s blogs</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Neural networks explained" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="An explanation of how neural networks work" />
+<meta property="og:description" content="An explanation of how neural networks work" />
+<link rel="canonical" href="https://claudiufilip110.github.io/Blogging/jupyter/explanation/2020/11/04/explanation-of-neural-nets.html" />
+<meta property="og:url" content="https://claudiufilip110.github.io/Blogging/jupyter/explanation/2020/11/04/explanation-of-neural-nets.html" />
+<meta property="og:site_name" content="Filip Claudiu’s blogs" />
+<meta property="og:image" content="https://claudiufilip110.github.io/Blogging/images/explanation_neural_net/neural_net.PNG" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-11-04T00:00:00-06:00" />
+<script type="application/ld+json">
+{"url":"https://claudiufilip110.github.io/Blogging/jupyter/explanation/2020/11/04/explanation-of-neural-nets.html","@type":"BlogPosting","headline":"Neural networks explained","dateModified":"2020-11-04T00:00:00-06:00","datePublished":"2020-11-04T00:00:00-06:00","image":"https://claudiufilip110.github.io/Blogging/images/explanation_neural_net/neural_net.PNG","mainEntityOfPage":{"@type":"WebPage","@id":"https://claudiufilip110.github.io/Blogging/jupyter/explanation/2020/11/04/explanation-of-neural-nets.html"},"description":"An explanation of how neural networks work","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/Blogging/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="https://claudiufilip110.github.io/Blogging/feed.xml" title="Filip Claudiu's blogs" /><link rel="shortcut icon" type="image/x-icon" href="/Blogging/images/favicon.ico"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Primer/15.2.0/primer.css" integrity="sha512-xTz2ys4coGAOz8vuV1NcQBkgVmKhsSEtjbqyMJbBHRplFuvKIUo6xhLHpAyPt9mfR6twHJgn9OgVLuqOvjeBhg==" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+
+<script>
+function wrap_img(fn) {
+    if (document.attachEvent ? document.readyState === "complete" : document.readyState !== "loading") {
+        var elements = document.querySelectorAll(".post img");
+        Array.prototype.forEach.call(elements, function(el, i) {
+            if (el.getAttribute("title") && (el.className != "emoji")) {
+                const caption = document.createElement('figcaption');
+                var node = document.createTextNode(el.getAttribute("title"));
+                caption.appendChild(node);
+                const wrapper = document.createElement('figure');
+                wrapper.className = 'image';
+                el.parentNode.insertBefore(wrapper, el);
+                el.parentNode.removeChild(el);
+                wrapper.appendChild(el);
+                wrapper.appendChild(caption);
+            }
+        });
+    } else { document.addEventListener('DOMContentLoaded', fn); }
+}
+window.onload = wrap_img;
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+    // add link icon to anchor tags
+    var elem = document.querySelectorAll(".anchor-link")
+    elem.forEach(e => (e.innerHTML = '<i class="fas fa-link fa-xs"></i>'));
+    });
+</script>
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/Blogging/">Filip Claudiu&#39;s blogs</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/Blogging/about/">About Me</a><a class="page-link" href="/Blogging/search/">Search</a><a class="page-link" href="/Blogging/categories/">Tags</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Neural networks explained</h1><p class="page-description">An explanation of how neural networks work</p><p class="post-meta post-meta-title"><time class="dt-published" datetime="2020-11-04T00:00:00-06:00" itemprop="datePublished">
+        Nov 4, 2020
+      </time>
+       • <span class="read-time" title="Estimated read time">
+    
+    
+      6 min read
+    
+</span></p>
+
+    
+      <p class="category-tags"><i class="fas fa-tags category-tags-icon"></i></i> 
+      
+        <a class="category-tags-link" href="/Blogging/categories/#jupyter">jupyter</a>
+        &nbsp;
+      
+        <a class="category-tags-link" href="/Blogging/categories/#explanation">explanation</a>
+        
+      
+      </p>
+    
+
+    
+      
+        <div class="pb-5 d-flex flex-wrap flex-justify-end">
+          <div class="px-2">
+
+    <a href="https://github.com/ClaudiuFilip110/Blogging/tree/master/_notebooks/2020-11-04-explanation-of-neural-nets.ipynb" role="button" target="_blank">
+<img class="notebook-badge-image" src="/Blogging/assets/badges/github.svg" alt="View On GitHub">
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://mybinder.org/v2/gh/ClaudiuFilip110/Blogging/master?filepath=_notebooks%2F2020-11-04-explanation-of-neural-nets.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/Blogging/assets/badges/binder.svg" alt="Open In Binder"/>
+    </a>
+</div>
+
+          <div class="px-2">
+    <a href="https://colab.research.google.com/github/ClaudiuFilip110/Blogging/blob/master/_notebooks/2020-11-04-explanation-of-neural-nets.ipynb" target="_blank">
+        <img class="notebook-badge-image" src="/Blogging/assets/badges/colab.svg" alt="Open In Colab"/>
+    </a>
+</div>
+        </div>
+      </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <!--
+#################################################
+### THIS FILE WAS AUTOGENERATED! DO NOT EDIT! ###
+#################################################
+# file to edit: _notebooks/2020-11-04-explanation-of-neural-nets.ipynb
+-->
+
+<div class="container" id="notebook-container">
+        
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="What-is-a-neural-network?">What is a neural network?<a class="anchor-link" href="#What-is-a-neural-network?"> </a></h1><p>A neural network is a stack of neurons who work together towards a certain goal.
+<img src="/Blogging/images/copied_from_nb/my_icons/neural_net.png" alt="neural_net.PNG" /></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Neurons">Neurons<a class="anchor-link" href="#Neurons"> </a></h1><p>So basically, a neural net is a collection of these neurons. But what are neurons?
+A neuron is a variable that holds a value. 
+What kind of value can a neuron hold?
+Most of the times a neuron just holds a value:</p>
+
+<pre><code>- it can be a value from 0 to 255 for a pixel value(for images)
+- it can be a value of 0 or 1 for a classifier
+- or it can be whatever value you want it to be, dependent to what you want
+
+</code></pre>
+<h2 id="basically,-a-neuron-just-holds-a-value">basically, a neuron just holds a value<a class="anchor-link" href="#basically,-a-neuron-just-holds-a-value"> </a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Layers">Layers<a class="anchor-link" href="#Layers"> </a></h1><p>The neurons work in layers. What is a layer? A layer is an array of neurons on the same level. In the image above <img src="my_icons/layer.png" alt="image.png" /> could be considered a layer.</p>
+<p>So a layer is just the same level of neurons. NN(Neural Networks) can have a lot of layers, different in size or length, but the basic thing to remember is that layers propagate the information further down the network. <img src="my_icons/more_neural_nets.png" alt="image-2.png" /></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Weights-and-biases">Weights and biases<a class="anchor-link" href="#Weights-and-biases"> </a></h1><p>The next thing you need to understand are weights and biases. What are these? 
+Weights and biases are part of a mathematical equation (m*x+n), where m IS a certain weight, n IS a certain bias and x is the value of the neuron.</p>
+<p>The weights and biases connect the layers together. Reffering back to the first image, you can see that every neuron in a certain layer is connected to every neuron in the next layer. These connection have certain values.</p>
+<p>Imagine a network of people. You can have a strong connection to your relatives and a weak connection to me, let's say. Well, a "strong" connection would have a high weight and a "weak" connection has a small weight. A bias also has an effect on the connection, but not quite as big as a weight since multiplication has a higher exponent than addition.</p>
+
+<pre><code>ex. 10 * 10 = 100 and 10 + 10 = 20
+but 10 * 100.000 = 1.000.000 and 10 + 100.000 = 100.010</code></pre>
+<p>So, to sum up:
+Weights and biases connect the layers together and they decide whether a neuron in the first layer has a strong connection with a neuron in the second layer.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Learning">Learning<a class="anchor-link" href="#Learning"> </a></h1><p>Now, this is where the magic happens. What neural networks allow us to do is <b> LEARN </b> from our mistakes. We can change the parameters( weights and biases) of a neuron based on a reward function. So, if you tell the network that a connection between 2 neurons is good the network will remember that and not change the parameters a lot. But if you tell it a connection is bad, then the NN will change the parameters of that connection so the next time you go through the same neurons you will get a better result.</p>
+<p>This type of learning is called incremental learning where you take small steps by changing small things in your parameters so that only a few things will get changed. This is slow, but given enough time the network will <b> LEARN </b> to improve it's parameters and the end result.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Loss-and-reward">Loss and reward<a class="anchor-link" href="#Loss-and-reward"> </a></h1><p>You're probably asking yourself what determines if a connection is good or bad? What is a reward function?
+Basically, a reward function is a simple function that tells you if the output is the one that you expected.</p>
+<p>You see, neural networks rely on a type of Machine Learning called Supervised Learning.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Supervised-Learning">Supervised Learning<a class="anchor-link" href="#Supervised-Learning"> </a></h1><p>Supervised learning refers to a type of machine learning where you give it a set of inputs, you tell the computer what that set of input is and you tell it "now predict what these outputs are".</p>
+<p>For example you can give it images of hand drawn photos(inputs) to learn from. The algorithm tries to predict what the photo is and checks the result with the label you gave it. If you say a photo is a 3 and initially it predicts 1 the parameters will change so that the next time you will get a different result. We do not know what the network changes, but we do know the output is good(this is one of the reasons it is sometimes calleda black box). You know the input, the output, but do not know how it is produced.</p>
+<h1 id="Going-back-to-loss-and-reward">Going back to loss and reward<a class="anchor-link" href="#Going-back-to-loss-and-reward"> </a></h1><p>So, the loss function is the one that determines if the connection is good or bad. And the loss functions is usually based on SGD(Stochastic Gradient Descend) - which requires more math to explain.</p>
+<p>But, in short, the loss function just says "this output is not what i expected, change it" or "this is good, do not change it".
+The next cell tries to explain SGD, so you can skip it if you want.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Stochastic-Gradient-Descend">Stochastic Gradient Descend<a class="anchor-link" href="#Stochastic-Gradient-Descend"> </a></h1><p>Gradient Descent is a iterative optimization algorithm for finding a local minimum of a differentiable function. In simpler terms, it find the minimum of a function - in our case the loss function.</p>
+<p>As you can imagine, finding the minimum of the loss functions means there is no loss. If there is no loss there is nothing left to change, thus the algorithm is complete. This would be the ideal case, but in reality usually we can't find the minimum loss.
+But how does <b> SGD </b> work?</p>
+<p>Basically, you choose a direction and a step at which you advance and try to find the minimum.
+<img src="/Blogging/images/copied_from_nb/my_icons/loss1.PNG" alt="loss1" /></p>
+<ol>
+<li>How do you choose the step? From my understand thus far, the step is important. Choose a too small step and you will never get to the end as the increase will be really small, choose a too big step and you risk of it "bouncing" and still never reaching the end.<img src="my_icons/loss2.PNG" alt="loss2" /> I do not know yet how to choose a step.</li>
+<li>How to you choose the direction? In order to choose the direction you try to go in both directions first and see which one is closer to the minimum. for example you choose a value of x + 1 and x - 1 and see which one gets you closer to the minimum. and you choose that one.</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Epochs-and-learning">Epochs and learning<a class="anchor-link" href="#Epochs-and-learning"> </a></h1><p>I said the NN learns incrementally. It does so in epochs. An epoch is the time it takes a NN to go through the whole dataset a single time. After it goes through an epoch, it goes back, with the loss function and Gradient descend and makes some small adjustments to the weights and biases, thus getting closer, step by step to the minimum loss function.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion"> </a></h1><p>There are a lot more things to explain such as activation functions, back propagation, feed forward etc, but this is my understanding this far of NN.</p>
+<p>Neural Networks learn by changing the weights and biases between different neurons. These values are changed based on the loss function which is calculated using a method called Stochastic Gradient Descend.</p>
+<p>In conclusion, neural networks are extremly complicated and my "explanation" doesn't even come close to the reality, but it could be considered a starting point towards understand these neural networks.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+
+
+  </div><!-- from https://github.com/utterance/utterances -->
+<script src="https://utteranc.es/client.js"
+        repo="ClaudiuFilip110/Blogging"
+        issue-term="title"
+        label="blogpost-comment"
+        theme="github-light"
+        crossorigin="anonymous"
+        async>
+</script><a class="u-url" href="/Blogging/jupyter/explanation/2020/11/04/explanation-of-neural-nets.html" hidden></a>
+</article>
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/Blogging/"></data>
+
+  <div class="wrapper">
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/Blogging/feed.xml">
+            <svg class="svg-icon orange">
+              <use xlink:href="/Blogging/assets/minima-social-icons.svg#rss"></use>
+            </svg><span>Subscribe</span>
+          </a>
+        </p>
+      </div>
+      <div class="footer-col">
+        <p>A blogging platform built using fastai&#39;s fastblog</p>
+      </div>
+    </div>
+
+    <div class="social-links"><ul class="social-media-list"><li><a rel="me" href="https://github.com/ClaudiuFilip110" title="ClaudiuFilip110"><svg class="svg-icon grey"><use xlink:href="/Blogging/assets/minima-social-icons.svg#github"></use></svg></a></li><li><a rel="me" href="https://www.linkedin.com/in/claudiu-filip-1394a7190%2F" title="claudiu-filip-1394a7190/"><svg class="svg-icon grey"><use xlink:href="/Blogging/assets/minima-social-icons.svg#linkedin"></use></svg></a></li></ul>
+</div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
