@@ -12,7 +12,7 @@
       "page1": {
           "title": "About Me",
           "content": "This website is powered by fastpages 1. . a blogging platform that natively supports Jupyter notebooks in addition to other formats. &#8617; . |",
-          "url": "https://claudiufilip110.github.io/Blogging/about/",
+          "url": "https://claudiufilip110.github.io/about/",
           "relUrl": "/about/",
           "date": ""
       }
@@ -44,7 +44,7 @@
       ,"page10": {
           "title": "",
           "content": "Sitemap: {{ “sitemap.xml” | absolute_url }} | .",
-          "url": "https://claudiufilip110.github.io/Blogging/robots.txt",
+          "url": "https://claudiufilip110.github.io/robots.txt",
           "relUrl": "/robots.txt",
           "date": ""
       }
