@@ -49,8 +49,10 @@ Most of the times a neuron just holds a value:</p>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Layers">Layers<a class="anchor-link" href="#Layers"> </a></h1><p>The neurons work in layers. What is a layer? A layer is an array of neurons on the same level. In the image above <img src="my_icons/layer.PNG" alt=""> could be considered a layer.</p>
-<p>So a layer is just the same level of neurons. NN(Neural Networks) can have a lot of layers, different in size or length, but the basic thing to remember is that layers propagate the information further down the network. <img src="my_icons/more_neural_nets.PNG" alt=""></p>
+<h1 id="Layers">Layers<a class="anchor-link" href="#Layers"> </a></h1><p>The neurons work in layers. What is a layer? A layer is an array of neurons on the same level. In the image above 
+<img src="/Blogging/images/copied_from_nb/my_icons/layer.PNG" alt=""> could be considered a layer.</p>
+<p>So a layer is just the same level of neurons. NN(Neural Networks) can have a lot of layers, different in size or length, but the basic thing to remember is that layers propagate the information further down the network. 
+<img src="/Blogging/images/copied_from_nb/my_icons/more_neural_nets.PNG" alt=""></p>
 
 </div>
 </div>
@@ -106,7 +108,8 @@ But how does <b> SGD </b> work?</p>
 <p>Basically, you choose a direction and a step at which you advance and try to find the minimum.
 <img src="/Blogging/images/copied_from_nb/my_icons/loss1.PNG" alt=""></p>
 <ol>
-<li>How do you choose the step? From my understand thus far, the step is important. Choose a too small step and you will never get to the end as the increase will be really small, choose a too big step and you risk of it "bouncing" and still never reaching the end.<img src="my_icons/loss2.PNG" alt=""> I do not know yet how to choose a step.</li>
+<li>How do you choose the step? From my understand thus far, the step is important. Choose a too small step and you will never get to the end as the increase will be really small, choose a too big step and you risk of it "bouncing" and still never reaching the end.
+<img src="/Blogging/images/copied_from_nb/my_icons/loss2.PNG" alt=""> I do not know yet how to choose a step.</li>
 <li>How to you choose the direction? In order to choose the direction you try to go in both directions first and see which one is closer to the minimum. for example you choose a value of x + 1 and x - 1 and see which one gets you closer to the minimum. and you choose that one.</li>
 </ol>
 
